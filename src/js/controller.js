@@ -1,9 +1,9 @@
 import * as model from './model.js';
-import recipeView from './views/recipeVeiw.js'
+import recipeView from './views/recipeVeiw.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-const recipeContainer = document.querySelector('.recipe');
+const RecipeContainer = document.querySelector('.recipe');
 
 const timeout = function (s) {
   return new Promise(function (_, reject) {

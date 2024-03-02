@@ -585,7 +585,7 @@ var _modelJs = require("./model.js");
 var _recipeVeiwJs = require("./views/recipeVeiw.js");
 var _recipeVeiwJsDefault = parcelHelpers.interopDefault(_recipeVeiwJs);
 var _runtime = require("regenerator-runtime/runtime");
-const recipeContainer = document.querySelector(".recipe");
+const RecipeContainer = document.querySelector(".recipe");
 const timeout = function(s) {
     return new Promise(function(_, reject) {
         setTimeout(function() {
@@ -2597,12 +2597,12 @@ class RecipeView {
           <h2 class="heading--2">How to cook it</h2>
           <p class="recipe__directions-text">
             This recipe was carefully designed and tested by
-            <span class="recipe__publisher">${recipe.publisher}</span>. Please check out
+            <span class="recipe__publisher">${this.#data.publisher}</span>. Please check out
             directions at their website.
           </p>
           <a
             class="btn--small recipe__btn"
-            href="${recipe.sourceUrl}"
+            href="${this.#data.sourceUrl}"
             target="_blank"
           >
             <span>Directions</span>
