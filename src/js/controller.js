@@ -3,7 +3,7 @@ import recipeView from './views/recipeVeiw.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-const RecipeContainer = document.querySelector('.recipe');
+const recipeContainer = document.querySelector('.recipe');
 
 const timeout = function (s) {
   return new Promise(function (_, reject) {
@@ -37,5 +37,5 @@ const controlRecipes = async function() {
     alert(err);
   }
 };
-['hashchange', 'load'].forEach (ev => window.addEventListener(ev, controlRecipes))
+['hashchange', 'load'].forEach (ev => window.addEventListener(ev, controlRecipes));
 

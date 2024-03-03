@@ -1,4 +1,6 @@
 import icons from 'url:../../img/icons.svg';
+import { Fraction } from 'fractional';
+console.log(Fraction);
 
  class RecipeView {
 
@@ -33,8 +35,6 @@ import icons from 'url:../../img/icons.svg';
 
 
   #generateMarkup(){
-    console.log(this.#data);
-  
    return `
          <figure class="recipe__fig">
           <img src="${this.#data.image}" alt="${this.#data.title}" class="recipe__img" />
@@ -89,21 +89,7 @@ import icons from 'url:../../img/icons.svg';
           <ul class="recipe__ingredient-list">
 
 
-               ${this.#data.ingredients.map(ing => {
-
-                return`
-                <li class="recipe__ingredient">
-                <svg class="recipe__icon">
-                  <use href="${icons}#icon-check"></use>
-                </svg>
-                <div class="recipe__quantity">${ing.quantity}</div>
-                <div class="recipe__description">
-                  <span class="recipe__unit">${ing.unit}</span>
-                 ${ing.description}
-                </div>
-              </li>
-                `
-               })
+               ${this.#data.ingredients.map(this.#generateMarkupIngredient)
                .join('')}
 
         </div>
@@ -128,6 +114,23 @@ import icons from 'url:../../img/icons.svg';
         </div> 
        `;
   }
+
+
+  #generateMarkupIngredient(ing) {
+    return`
+    
+    <li class="recipe__ingredient">
+    <svg class="recipe__icon">
+      <use href="${icons}#icon-check"></use>
+    </svg>
+    <div class="recipe__quantity">${ ing.quantity ? new Fraction (ing.quantity).toString() : ''}</div>
+    <div class="recipe__description">
+      <span class="recipe__unit">${ing.unit}</span>
+     ${ing.description}
+    </div>
+  </li>
+    `
+   }
 }
 
 export default new RecipeView();
